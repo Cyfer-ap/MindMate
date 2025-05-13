@@ -1,0 +1,16 @@
+# node
+node_modules/
+.env
+dist/
+.vscode/
+*.log
+*.env.local
+*.DS_Store
+
+# npm/yarn
+package-lock.json
+yarn.lock
+
+# OS
+Thumbs.db
+.DS_Store
