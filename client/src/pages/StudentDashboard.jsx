@@ -1,6 +1,6 @@
 import { useAuth } from '../context/AuthContext'
 
-export default function Dashboard() {
+export default function StudentDashboard() {
     const { user, logout } = useAuth()
 
     return (

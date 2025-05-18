@@ -19,10 +19,23 @@ export default function Login() {
             const res = await axios.post('/auth/login', form);
             const { token, user } = res.data;
 
+            // Save only token locally
             localStorage.setItem('token', token);
-            localStorage.setItem('user', JSON.stringify(user));
 
-            navigate('/dashboard');
+            // Navigate based on role
+            switch (user.role) {
+                case 'admin':
+                    navigate('/admin-dashboard');
+                    break;
+                case 'teacher':
+                    navigate('/teacher-dashboard');
+                    break;
+                case 'student':
+                    navigate('/student-dashboard');
+                    break;
+                default:
+                    navigate('/');
+            }
         } catch (err) {
             setError(err.response?.data?.message || 'Login failed');
         }
