@@ -4,7 +4,12 @@ import axios from '../api/axios';
 
 export default function Register() {
     const navigate = useNavigate();
-    const [form, setForm] = useState({ name: '', email: '', password: '' });
+    const [form, setForm] = useState({
+        name: '',
+        email: '',
+        password: '',
+        role: 'student' // default role
+    });
     const [error, setError] = useState('');
 
     const handleChange = (e) => {
@@ -32,7 +37,6 @@ export default function Register() {
                 <div className="w-full max-w-md text-center space-y-6 transform scale-110">
                     <h1 className="text-5xl font-extrabold">🎓 Join MindMate</h1>
                     <p className="text-xl">Unlock your personalized learning journey today.</p>
-
                     <div className="grid grid-cols-2 gap-4 text-base">
                         <div className="bg-white/10 p-5 rounded-xl shadow-lg">
                             <p className="text-3xl font-bold">10K+</p>
@@ -102,6 +106,20 @@ export default function Register() {
                                 className="mt-2 w-full border px-5 py-3 rounded-lg text-lg focus:ring-2 focus:ring-violet-500"
                                 required
                             />
+                        </div>
+                        <div>
+                            <label className="block text-base font-medium text-gray-700">Role</label>
+                            <select
+                                name="role"
+                                value={form.role}
+                                onChange={handleChange}
+                                className="mt-2 w-full border px-5 py-3 rounded-lg text-lg focus:ring-2 focus:ring-violet-500"
+                                required
+                            >
+                                <option value="student">Student</option>
+                                <option value="teacher">Teacher</option>
+                                <option value="admin">Admin</option>
+                            </select>
                         </div>
 
                         <button
